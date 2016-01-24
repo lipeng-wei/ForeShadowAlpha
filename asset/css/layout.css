@@ -1,0 +1,51 @@
+﻿html, body {
+    background: black;
+    font-family: Verdana,Lucida,Arial,"微软雅黑","Microsoft YaHei","宋体";
+    width: 100%;
+    height: 100%;
+    margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration:none;
+	outline: none;
+    cursor:pointer;
+}
+ul, li {
+	list-style:none;
+	padding: 0;
+}
+h1, h2, h3 {
+	margin:0;
+}
+
+div, span, h1, h2, h3, h4, h5, ul, li,
+article, footer, header, nav, section, pre {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+button, input {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.displaynone {
+    display: none;
+}

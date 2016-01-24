@@ -1,0 +1,154 @@
+﻿.chart input{
+    background: none;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.chart input:focus{
+    color: #ffffff;
+    background: #333333;
+}
+.chart-primary {
+    position: fixed;
+    top: -19px;
+    width: 100%;
+    z-index: 888;
+}
+.chart-main {
+    margin: 368px 0 0;
+    z-index: 588;
+}
+
+
+.right-button {
+    font-size: 12px;
+    font-weight: normal;
+    text-align:center;
+    padding:3px;
+    margin:6px;
+
+}
+.right-button-selected {
+    color: silver;
+    font-weight: bold;
+}
+.right-button-select {
+    color: grey;
+    font-weight: normal;
+}
+.right-button-hover {
+    color: black;
+    background-color: silver;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.out-link{
+    font-size: 12px;
+    font-weight: normal;
+    text-align:center;
+    padding:3px;
+    margin:6px;
+    color: grey;
+}
+.out-link:hover{
+    color: black;
+    background-color: silver;
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.fore-stock-name{
+    color: #990033;
+    font-size: 18px;
+}
+.fore-stock-code{
+    color: #336666;
+    font-size: 16px;
+}
+
+
+
+#favorite{
+    color: #666;
+    border-radius: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    text-align:center;
+    padding: 3px;
+    margin: 0 6px;
+    font-weight: normal;
+
+}
+#favorite:hover{
+    color: black;
+    background-color: #999;
+}
+
+
+/*  Favorite 单独使用  */
+#favoritelet {
+    border: 1px solid #336666;
+    border-top-width: 5px;
+    background: #000000 none repeat scroll 0 0;
+    margin: 8px 0 0;
+    padding :8px 0 0;
+}
+
+#favoritelet .nano{
+    height: 318px !important;
+}
+
+#favoritelet a.a-select{
+    width: 28%;
+    color: #666;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 8px;
+    margin: 3px 5px;
+    overflow: hidden;
+}
+#favoritelet a.a-selected{
+    color: black;
+    background-color: #999;
+}
+#favoritelet a:hover{
+    border: 1px solid #999;
+}
+.favoritelet-pane{
+    margin: 0;
+    padding: 3px 5px 0;
+    border: 1px solid transparent;
+    border-top-color: #111;
+    border-top-width: 1px;
+}
+.favoritelet-pane a{
+    font-size: 16px;
+    color: #666;
+    border-radius: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.5em 2px;
+    padding: 0.25em 0.5em;
+}
+.favoritelet-pane a:hover{
+    color: black;
+    background-color: #999;
+}
+
+/*  Favorite 单独使用  */
+
+input[type="text"], input[type="button"], input[type="search"]{
+    width: 118px;
+    font-size: 16px;
+    margin: 0 0.5em 1px;
+    padding: 0.2em 0.5em;
+    border-radius: 2px;
+    border: 1px solid #383838;
+}
+input[type="text"]:focus, input[type="button"]:focus, input[type="search"]:focus{
+    background: #333333;
+    color: #FFFFFF;
+}

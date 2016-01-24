@@ -1,0 +1,7 @@
+﻿aim|info|table
+dig|20151200-21Good.Table.Info.txt|20151200-21Good.Table.txt
+
+
+
+
+

@@ -1,0 +1,198 @@
+﻿body{
+    overflow: hidden;
+    color: #999;
+}
+
+table
+{
+    table-layout: fixed
+}
+
+input[type="text"], input[type="button"], input[type="search"]{
+    width: 118px;
+    font-size: 16px;
+    margin: 0 0.5em 1px;
+    padding: 0.2em 0.5em;
+    border-radius: 2px;
+    border: 1px solid #383838;
+}
+input[type="text"]:focus, input[type="button"]:focus, input[type="search"]:focus{
+    background: #333333;
+    color: #FFFFFF;
+}
+
+.intro {
+    width: 66%;
+    margin: 0 auto;
+    padding: 8px 0;
+    overflow: hidden;
+}
+.intro h1{
+    font-size: 19px;
+    color: #990033;
+    font-weight: bold;
+    text-align: center;
+}
+.intro h2{
+    font-size: 15px;
+    color: #336666;
+    font-weight: normal;
+    text-align: center;
+}
+.intro a{
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+}
+
+#intro-detail {
+    border: 1px solid #336666;
+    border-top-width: 5px;
+    background: #000000 none repeat scroll 0 0;
+    margin: 8px 0 0 ;
+    padding :8px 0 0;
+}
+
+#intro-detail .nano{
+    height: 318px !important;
+}
+#intro-detail p{
+    font-size: 16px;
+    font-weight: normal;
+    text-indent: 1.5em;
+}
+
+.container {
+    padding: 0 0 8px 0;
+    width: 98%;
+    margin: -6px auto 1px auto;
+}
+
+.container td a{
+    color: #990033;
+    display: block;
+}
+.container td a:hover{
+    color: #FFFFFF;
+}
+.nano{
+    height: 300px;
+    width: auto;
+    overflow: hidden;
+}
+.exedebug{
+    display: none;
+    height:58px;
+    border: 1px solid transparent;
+    border-top-color: #333;
+    margin: 0 5px;
+    padding: 3px;
+    overflow: hidden;
+}
+
+/*  favor-manage 单独使用  */
+
+#favor{
+    font-size: 15px;
+    color: #666;
+}
+#favor:hover{
+    color: #990033;
+    text-decoration:underline;
+}
+
+#favor-manage-checkbox a.a-select{
+    width: 28%;
+    color: #666;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 8px;
+    margin: 3px 5px;
+    overflow: hidden;
+}
+#favor-manage-checkbox a.a-selected{
+    color: black;
+    background-color: #999;
+}
+#favor-manage-checkbox a:hover{
+    border: 1px solid #999;
+}
+.favor-manage-pane{
+    margin: 0;
+    padding: 3px 5px 0;
+    border: 1px solid transparent;
+    border-top-color: #111;
+    border-top-width: 1px;
+}
+.favor-manage-pane a{
+    font-size: 16px;
+    color: #666;
+    border-radius: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.5em 2px;
+    padding: 0.25em 0.5em;
+}
+.favor-manage-pane a:hover{
+    color: black;
+    background-color: #999;
+}
+
+/*  favor-manage 单独使用  */
+
+/*  Favorite 单独使用  */
+#favoritelet {
+    border: 1px solid #336666;
+    border-top-width: 5px;
+    background: #000000 none repeat scroll 0 0;
+    margin: 8px 0 0 ;
+    padding :8px 0 0;
+}
+
+#favoritelet .nano{
+    height: 318px !important;
+}
+
+#favoritelet a.a-select{
+    width: 28%;
+    color: #666;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 8px;
+    margin: 3px 5px;
+    overflow: hidden;
+}
+#favoritelet a.a-selected{
+    color: black;
+    background-color: #999;
+}
+#favoritelet a:hover{
+    border: 1px solid #999;
+}
+.favoritelet-pane{
+    margin: 0;
+    padding: 3px 5px 0;
+    border: 1px solid transparent;
+    border-top-color: #111;
+    border-top-width: 1px;
+}
+.favoritelet-pane a{
+    font-size: 16px;
+    color: #666;
+    border-radius: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.5em 2px;
+    padding: 0.25em 0.5em;
+}
+.favoritelet-pane a:hover{
+    color: black;
+    background-color: #999;
+}
+
+/*  Favorite 单独使用  */
