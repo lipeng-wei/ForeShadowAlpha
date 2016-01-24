@@ -28,6 +28,7 @@ class GbbqStep extends Script{
         self::$tmp = new Tmp(TMP_PATH);
         self::$tmp->addTmp('gbbq.step.success', true);
         self::$tmp->addTmp('gbbq.step.failed', true);
+        self::$tmp->addTmp('gbbq.step.process', false);
 
         self::updateGbbq();
     }
@@ -43,12 +44,17 @@ class GbbqStep extends Script{
         var_dump($json);
         */
 
-        //$i = 1;
-
+        $p = -1;
         $list = Refer::getStock();
+        //得到进度
+        $content = self::$tmp->getTmpContent('gbbq.step.process');
+        $content = explode('===', $content);
+        $lastProcess = $content && $content[0]? $content[0]: -1;
         foreach($list as $item){
-
-            //if (--$i < 0 ) break;
+            $p++;
+            //if ($p >= 3 ) break;
+            if ($p < $lastProcess) continue;
+            self::$tmp->putTmpContent('gbbq.step.process', $p. '==='. $item['code']. ' '. $item['name']);
 
             $numCode = substr($item['code'], 2);
             $url = "http://stockdata.stock.hexun.com/2009_fhzzgb_" . $numCode . ".shtml";
@@ -81,6 +87,7 @@ class GbbqStep extends Script{
 
         }
         self::$log->debugLog("Finish Update Gbbq");
+        self::$tmp->putTmpContent('gbbq.step.process', '');
     }
 
 }
