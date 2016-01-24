@@ -36,6 +36,8 @@ class DdeDuty extends Script{
 
         self::$tmp->addTmp('dde.gpcxw.duty.cookie', false);
         self::$tmp->addTmp('dde.gpcxw.duty.failed', true);
+        self::$tmp->addTmp('dde.gpcxw.duty.process', false);
+
         self::$log->debugLog("Begin Update Gpcxw Dde");
 
         $host = 'www.gpcxw.com';
@@ -45,12 +47,18 @@ class DdeDuty extends Script{
         $url = 'http://www.gpcxw.com/ddx/000703.html';
         $content = DdeKeeper::curlSinglePage($url, $host, $referer, self::$tmp->getTmpFile('dde.gpcxw.duty.cookie'));
 
-        //$i = 2;
+        $p = -1;
 
         $list = Refer::getStock();
+        //得到进度
+        $content = self::$tmp->getTmpContent('dde.gpcxw.duty.process');
+        $content = explode('===', $content);
+        $lastProcess = $content && $content[0]? $content[0]: -1;
         foreach($list as $item){
-
-            //if (--$i < 0 ) break;
+            $p++;
+            //if ($p >= 3 ) break;
+            if ($p < $lastProcess) continue;
+            self::$tmp->putTmpContent('dde.gpcxw.duty.process', $p. '==='. $item['code']. ' '. $item['name']);
 
             $numCode = substr($item['code'], 2);
             $data = 0;
@@ -138,6 +146,7 @@ class DdeDuty extends Script{
 
         }
         self::$log->debugLog("Finish Update Gpcxw Dde");
+        self::$tmp->putTmpContent('dde.gpcxw.duty.process', '');
 
     }
 
