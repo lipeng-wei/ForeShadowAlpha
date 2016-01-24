@@ -924,6 +924,7 @@ $(function () {
         cursorcolor: "#000000",
         cursorwidth: 5,
         cursorminheight: 56,
+        scrollspeed: 158,
         horizrailenabled: false,
         enablekeyboard: false
     });

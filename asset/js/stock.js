@@ -703,7 +703,9 @@ $(function () {
     }).append('<a class="out-link" target="_blank" href="http://stockpage.10jqka.com.cn/' +
             stock['code'].substring(2)+ '/">同花顺</a>' +
             '<a class="out-link" target="_blank" href="http://quote.eastmoney.com/' +
-            stock['code']+ '.html">东方财富</a>'
+            stock['code']+ '.html">东方财富</a>' +
+            '<a class="out-link" target="_blank" href="Chart.php?code=' +
+            stock['code']+ '">Chart</a>'
         );
 
     //更新数据
