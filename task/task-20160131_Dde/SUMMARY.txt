@@ -1,0 +1,9 @@
+﻿aim|info|table
+prove|2016-01-04_2016-01-29_DdeNum.Table.Info.txt|2016-01-04_2016-01-29_DdeNum.Table.txt
+prove|2016-01-04_2016-01-29_DdeNum_Fitered.Table.Info.txt|2016-01-04_2016-01-29_DdeNum_Fitered.Table.txt
+prove|2016-01-04_2016-01-29_DdeNum_Fitered-2.Table.Info.txt|2016-01-04_2016-01-29_DdeNum_Fitered-2.Table.txt
+
+
+
+
+
