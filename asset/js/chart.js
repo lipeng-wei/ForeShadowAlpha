@@ -11,7 +11,7 @@ $.extend(ForeChart, {
     otherChart  	: 	null,
     setOtherSeries  :   null,
     hash            :   null,
-    right           :   'normal',
+    right           :   'before',
     calcPage 		: 	null
 });
 
