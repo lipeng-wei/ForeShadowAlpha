@@ -32,7 +32,9 @@ class ProveDde extends Task{
 
         //以下为具体的函数调用
 
-        self::calcDdeNum('2016-01-04', '2016-01-29');
+        //self::calcDdeNum('2016-01-04', '2016-01-29');
+        //self::calcDdeNum('2016-01-25', '2016-01-29');
+        self::calcDdeNum('2016-02-03', '2016-02-18');
 
     }
 
@@ -70,7 +72,7 @@ class ProveDde extends Task{
 
             $dd = new DdeData($stkL['code']);
             if (! $dd->prepareData()) continue;
-            $dde = $dd->getDayPeriod($start, $end, 7);
+            $dde = $dd->getDayPeriod($start, $end, 4);
             //var_dump($dde);
             if (! $dde) continue;
 

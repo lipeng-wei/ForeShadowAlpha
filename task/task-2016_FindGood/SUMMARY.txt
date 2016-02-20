@@ -1,0 +1,2 @@
+﻿aim|info|table
+dig|2015-10-13_2015-10-20_5_Good.Table.Info.txt|2015-10-13_2015-10-20_5_Good.Table.txt

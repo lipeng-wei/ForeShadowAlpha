@@ -26,9 +26,9 @@ class AnCommonTest extends Script{
 
 
         //self::testTmp();
-        self::testRefer();
+        //self::testRefer();
         //self::testLog();
-        //self::testFunc();
+        self::testFunc();
         //self::testRGB();
 
         //self::testUrl();
@@ -217,7 +217,10 @@ class AnCommonTest extends Script{
         if (array()) echo "true";
         */
         //echo floatval('-8.85%');
-        echo date("Y-m-d", strtotime('-1 day'));
+        //echo date("Y-m-d", strtotime('-1 day'));
+
+        $a=array("0"=>"red","1"=>"green","2"=>"blue","3"=>"yellow","4"=>"brown");
+        print_r(array_slice($a,2,5));
     }
 
 
