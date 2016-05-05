@@ -41,9 +41,13 @@ class DayDuty extends Script{
         self::$tmp->addTmp('day.duty.cookie', false);
         self::$tmp->addTmp('day.duty.failed', false);
         //访问xueqiu.com 生成cookie
-        $url = 'http://xueqiu.com';
+        $url = 'http://xueqiu.com/';
         $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
-
+        $url = 'https://xueqiu.com/';
+        $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        /*$url = 'https://xueqiu.com/stock/forchartk/stocklist.json?symbol=sh000001&period=1day&type=normal&begin=1458748800000&end=1462240877000';
+        $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        var_dump($url);*/
 
         self::$log = new Log(LOG_PATH, __FILE__);
         self::updateTmpDay();
@@ -56,8 +60,13 @@ class DayDuty extends Script{
         self::$tmp = new Tmp(TMP_PATH);
         self::$tmp->addTmp('day.duty.cookie', false);
         //访问xueqiu.com 生成cookie
-        $url = 'http://xueqiu.com';
+        $url = 'http://xueqiu.com/';
         $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        $url = 'https://xueqiu.com/';
+        $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        /*$url = 'https://xueqiu.com/stock/forchartk/stocklist.json?symbol=sh000001&period=1day&type=normal&begin=1458748800000&end=1462240877000';
+        $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        var_dump($url);*/
 
         self::updataAllDay();
 
@@ -82,7 +91,7 @@ class DayDuty extends Script{
         //多读取10天的数据来对比 确认能否接上
         $begin = strtotime($last[sizeof($last)-10]['time'])*1000;
         $end = strtotime("now")*1000;
-        $url = 'http://xueqiu.com/stock/forchartk/stocklist.json?symbol=' .
+        $url = 'https://xueqiu.com/stock/forchartk/stocklist.json?symbol=' .
             $item['code'] . '&period=1day&type=' . $type . '&begin=' .
             $begin . '&end=' . $end;
 
@@ -116,7 +125,7 @@ class DayDuty extends Script{
 
     public static function resetSingleDay($item, $type){
         $end = strtotime("now")*1000;
-        $url = 'http://xueqiu.com/stock/forchartk/stocklist.json?symbol='.
+        $url = 'https://xueqiu.com/stock/forchartk/stocklist.json?symbol='.
             $item['code']. '&period=1day&type='. $type. '&end='. $end;
 
         self::$log->debugLog($item['name'], $item['code'], $type, $url);
@@ -147,7 +156,7 @@ class DayDuty extends Script{
     public static function updataAllDay(){
         self::$log->debugLog("Begin Update All Day");
         /*
-        $url = "http://xueqiu.com/stock/forchartk/stocklist.json?symbol=SH000001&period=1day&type=normal&begin=1416728848774&end=1448264848774";
+        $url = "https://xueqiu.com/stock/forchartk/stocklist.json?symbol=SH000001&period=1day&type=normal&begin=1416728848774&end=1448264848774";
         $json = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
         $json = DayKeeper::parseXueqiuJson($json);
         var_dump($json);

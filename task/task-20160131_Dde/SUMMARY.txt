@@ -1,11 +1,9 @@
 ﻿aim|info|table
-prove|2016-01-04_2016-01-29_DdeNum.Table.Info.txt|2016-01-04_2016-01-29_DdeNum.Table.txt
+prove|DdeNum.Table.Info.txt|2016-04-27_2016-05-04_DdeNum.Table.txt
+prove|DdeNum.Table.Info.txt|2016-04-05_2016-04-07_DdeNum.Table.txt
+prove|2016-02-03_2016-02-18_DdeNum.Table.Info.txt|2016-03-07_2016-03-11_DdeNum.Table.txt
+prove|2016-02-03_2016-02-18_DdeNum.Table.Info.txt|2016-02-03_2016-02-18_DdeNum.Table.txt
+prove|2016-01-25_2016-01-29_DdeNum.Table.Info.txt|2016-01-25_2016-01-29_DdeNum.Table.txt
 prove|2016-01-04_2016-01-29_DdeNum_Fitered.Table.Info.txt|2016-01-04_2016-01-29_DdeNum_Fitered.Table.txt
 prove|2016-01-04_2016-01-29_DdeNum_Fitered-2.Table.Info.txt|2016-01-04_2016-01-29_DdeNum_Fitered-2.Table.txt
-prove|2016-01-25_2016-01-29_DdeNum.Table.Info.txt|2016-01-25_2016-01-29_DdeNum.Table.txt
-prove|2016-02-03_2016-02-18_DdeNum.Table.Info.txt|2016-02-03_2016-02-18_DdeNum.Table.txt
-
-
-
-
-
+prove|2016-01-04_2016-01-29_DdeNum.Table.Info.txt|2016-01-04_2016-01-29_DdeNum.Table.txt

@@ -219,8 +219,13 @@ class AnCommonTest extends Script{
         //echo floatval('-8.85%');
         //echo date("Y-m-d", strtotime('-1 day'));
 
-        $a=array("0"=>"red","1"=>"green","2"=>"blue","3"=>"yellow","4"=>"brown");
-        print_r(array_slice($a,2,5));
+        $a=array("a"=>"red","g"=>"green","6"=>"blue","3"=>"yellow","h"=>"brown");
+        //print_r(array_slice($a,2,5));
+        $b = json_encode($a);
+        echo $b. '<br/>';
+        $c = json_decode($b);
+        print_r($c);
+        echo '<br/>'.$c->h.'<br/>';
     }
 
 

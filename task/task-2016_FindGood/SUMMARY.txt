@@ -1,2 +1,5 @@
 ﻿aim|info|table
+dig|2015-08-10_2015-08-17_5_Good.Table.Info.txt|2015-08-10_2015-08-17_5_Good.Table.txt
+dig|2015-09-28_2015-10-13_5_Good.Table.Info.txt|2015-09-28_2015-10-13_5_Good.Table.txt
 dig|2015-10-13_2015-10-20_5_Good.Table.Info.txt|2015-10-13_2015-10-20_5_Good.Table.txt
+dig|2015-10-20_2015-10-27_5_Good.Table.Info.txt|2015-10-20_2015-10-27_5_Good.Table.txt

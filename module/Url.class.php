@@ -22,6 +22,10 @@ class Url {
         return self::getBaseUrl() . 'task' . '/';
     }
 
+    public static function getPhpUri($name){
+        return '/' . PROJECT_DIR . '/' . $name . '.php';
+
+    }
     public static function getBasePhp($name){
         return self::getBaseUrl() . $name . '.php';
 

@@ -34,7 +34,8 @@ class ProveDde extends Task{
 
         //self::calcDdeNum('2016-01-04', '2016-01-29');
         //self::calcDdeNum('2016-01-25', '2016-01-29');
-        self::calcDdeNum('2016-02-03', '2016-02-18');
+        //self::calcDdeNum('2016-02-03', '2016-02-18');
+        self::calcDdeNum('2016-04-27', '2016-05-04');
 
     }
 
@@ -65,14 +66,14 @@ class ProveDde extends Task{
                 'DayNum' => 0
             );
 
-            $stkT['name'] = '<a target="_blank" href="'.Url::getBasePhp('Chart') . '?code=' . $stkL['code']. '">' .
+            $stkT['name'] = '<a target="_blank" href="'.Url::getPhpUri('Chart') . '?code=' . $stkL['code']. '">' .
                 '<span class="fore-stock-name">' . $stkL['name'] . '</span>' .
                 '<span class="fore-stock-spell displaynone">' . $stkL['spell'] . '</span></a>';
             $stkT['code'] =  '<span class="fore-stock-code">' . $stkL['code'] . '</span>';
 
             $dd = new DdeData($stkL['code']);
             if (! $dd->prepareData()) continue;
-            $dde = $dd->getDayPeriod($start, $end, 4);
+            $dde = $dd->getDayPeriod($start, $end, 1);
             //var_dump($dde);
             if (! $dde) continue;
 

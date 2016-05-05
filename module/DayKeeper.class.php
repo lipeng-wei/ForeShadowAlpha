@@ -22,17 +22,21 @@ class DayKeeper extends TableFile{
         $ch = curl_init();
 
         //设置选项参数
+        $header = array();
         $header[]= 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8 ';
         $header[]= 'Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3 ';
         $header[]= 'Accept-Encoding: gzip, deflate ';
         $header[]= 'Cache-Control:	max-age=0 ';
         $header[]= 'Connection: Keep-Alive ';
         $header[]= 'Host: xueqiu.com ';
-        $header[]= 'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0 ';
+        $header[]= 'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0 ';
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//设置返回数据
 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);   // 只信任CA颁布的证书
+        //curl_setopt($ch, CURLOPT_CAINFO, DATA_PATH . 'xueqiu.com.cacert.pem'); // CA根证书（用来验证的网站证书是否是CA颁布）
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // 检查证书中是否设置域名，
 
         curl_setopt($ch, CURLOPT_HEADER, false);
         //curl_setopt($ch, CURLOPT_HTTPHEADER,$header);
@@ -41,6 +45,7 @@ class DayKeeper extends TableFile{
         curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile); //读取
 
         $contents = curl_exec($ch);//执行
+        //echo 'Curl error: ' . curl_error($ch);
         curl_close($ch);//释放curl句柄
 
         return $contents;
@@ -48,6 +53,7 @@ class DayKeeper extends TableFile{
 
     public static function parseXueqiuJson($contents){
 
+        //var_dump($contents);
         if (! empty($contents)){
             $json = json_decode($contents, true);
             //var_dump($json);

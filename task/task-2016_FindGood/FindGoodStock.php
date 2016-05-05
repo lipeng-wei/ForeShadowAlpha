@@ -36,17 +36,24 @@ class FindGoodStock extends Task{
 
         /*
          *
+         *
+         *
+            09-28 ~ 10-13 5天
+
             10-13 ~ 10-20 5天
 
-            10-13 ~ 10-27 10天
-
+            10-20 ~ 10-27 5天
 
             8-10 ~ 8-17
 
             11-11 ~ 11-20
 
          */
-        self::calcRange('2015-10-13', '2015-10-20', 5);
+        //self::calcRange('2015-09-28', '2015-10-13', 5);
+        //self::calcRange('2015-10-13', '2015-10-20', 5);
+        //self::calcRange('2015-10-20', '2015-10-27', 5);
+
+        self::calcRange('2015-08-10', '2015-08-17', 5);
 
     }
 
@@ -85,8 +92,9 @@ class FindGoodStock extends Task{
             $MaxRange = -2;
             for ($i = 0; $i < $n / 2; $i++){
                 $daySlice = array_slice($day, $i, $n);
+                if (! $daySlice) continue;
                 $dMax = LogicOperation::highValue($daySlice, 'close');
-                $dMin= LogicOperation::lowValue($daySlice, 'close');
+                $dMin= $daySlice[0]['close'];
                 $dR = ceil(($dMax - $dMin) / $dMin * 100) / 100;
                 $MaxRange = $MaxRange < $dR ? $dR : $MaxRange;
             }
