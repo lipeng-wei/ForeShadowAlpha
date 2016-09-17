@@ -35,7 +35,8 @@ class ProveDde extends Task{
         //self::calcDdeNum('2016-01-04', '2016-01-29');
         //self::calcDdeNum('2016-01-25', '2016-01-29');
         //self::calcDdeNum('2016-02-03', '2016-02-18');
-        self::calcDdeNum('2016-04-27', '2016-05-04');
+        //self::calcDdeNum('2016-04-27', '2016-05-04');
+        self::calcDdeNum('2016-09-07', '2016-09-14');
 
     }
 

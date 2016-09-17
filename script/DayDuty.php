@@ -40,11 +40,13 @@ class DayDuty extends Script{
         self::$tmp = new Tmp(TMP_PATH);
         self::$tmp->addTmp('day.duty.cookie', false);
         self::$tmp->addTmp('day.duty.failed', false);
+
         //访问xueqiu.com 生成cookie
         $url = 'http://xueqiu.com/';
-        $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
         $url = 'https://xueqiu.com/';
-        $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+
         /*$url = 'https://xueqiu.com/stock/forchartk/stocklist.json?symbol=sh000001&period=1day&type=normal&begin=1458748800000&end=1462240877000';
         $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
         var_dump($url);*/
@@ -52,18 +54,24 @@ class DayDuty extends Script{
         self::$log = new Log(LOG_PATH, __FILE__);
         self::updateTmpDay();
     }
+
+
     //全部处理。包括更新和除权的重写入
     public static function allTmp(){
+
         //日志文件
         self::$log = new Log(LOG_PATH, __FILE__);
+
         //临时文件
         self::$tmp = new Tmp(TMP_PATH);
         self::$tmp->addTmp('day.duty.cookie', false);
+
         //访问xueqiu.com 生成cookie
         $url = 'http://xueqiu.com/';
-        $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
         $url = 'https://xueqiu.com/';
-        $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+        DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
+
         /*$url = 'https://xueqiu.com/stock/forchartk/stocklist.json?symbol=sh000001&period=1day&type=normal&begin=1458748800000&end=1462240877000';
         $url = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
         var_dump($url);*/
@@ -124,16 +132,19 @@ class DayDuty extends Script{
     }
 
     public static function resetSingleDay($item, $type){
-        $end = strtotime("now")*1000;
+
+        $end = strtotime("now -7 day") * 1000;
         $url = 'https://xueqiu.com/stock/forchartk/stocklist.json?symbol='.
             $item['code']. '&period=1day&type='. $type. '&end='. $end;
 
         self::$log->debugLog($item['name'], $item['code'], $type, $url);
+
         $json = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
         while(! ($json = DayKeeper::parseXueqiuJson($json))){
             $json = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
             sleep(1);
         }
+
         self::$log->debugLog($item['name'], $item['code'], $type, "Curl and Parse success");
 
         //var_dump($json);
@@ -194,14 +205,17 @@ class DayDuty extends Script{
         //读取Tmp文件中股票信息
         $list = self::$tmp->getTmpContent('day.duty.failed');
         $list = explode('|', $list);
+
         //print_r($list);
         //echo self::$tmp->getTmpContent('day.duty.failed');
+
         self::$tmp->newTmpFile('day.duty.failed');
         $rights = array('before', 'normal', 'after');
+
         foreach($list as $itemS){
             //echo $item['code'];
             $tt = explode(':', $itemS);
-            if (! $tt) continue;
+            if (empty($tt) || empty($tt[0])) continue;
             $item = array('code'=>$tt[0],'name'=>$tt[1],'spell'=>$tt[2]);
             if (Refer::isSockCode($item['code'])){
                 foreach($rights as $type){
