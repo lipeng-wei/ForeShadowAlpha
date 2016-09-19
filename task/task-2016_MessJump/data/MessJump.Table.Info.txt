@@ -1,1 +1,2 @@
-comment here!
+mess_score_yesterday|mess_score_today|mess_score_change  昨天，今天，差值
+mess_score_max_40d|mess_score_min_40d  四十天内最大，最小值
