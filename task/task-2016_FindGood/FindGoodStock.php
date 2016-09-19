@@ -58,6 +58,7 @@ class FindGoodStock extends Task{
     }
 
     //开始时间$start 结束时间$end 存在$n天内 最大涨幅$x
+    //最大涨幅$x 此处不做处理 在前端通过js脚本筛选
     public static function calcRange($start, $end, $n){
         $resultFile = self::$thisTaskDataPath. $start. '_'. $end. '_'. $n. '_Good.Table.txt';
 
