@@ -1,2 +1,2 @@
 ﻿aim|info|table
-pick|MessJump.Table.Info.txt|2016-09-01_2016-09-17_Vol2Price.Table.txt
+pick|MessJump.Table.Info.txt|Pick_MessJump.Table.txt

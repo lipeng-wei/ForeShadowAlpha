@@ -5,7 +5,7 @@
  * Date: 16-09-18
  * Time: 上午0:02
  *
- * 在一段时间内 量价配合分析（加权值）
+ * 在一段时间内 量价配合分析（天数）
  *
  */
 
@@ -43,7 +43,7 @@ class Vol2Price extends Task{
 
     //开始时间$start 结束时间$end
     public static function calcV2P($start, $end){
-        $resultFile = self::$thisTaskDataPath. $start. '_'. $end. '_Vol2Price.Table.txt';
+        $resultFile = self::$thisTaskDataPath. $start. '_'. $end. '_Vol2Price_Num.Table.txt';
 
         $limiter = 5;
 
@@ -68,7 +68,7 @@ class Vol2Price extends Task{
             //var_dump($day);
 
             $s_day = 0;
-            $s_V2P = 0;
+            $s_num = 0;
             for ($i = 2; $i < count($day); $i++) {
 
                 //处理当日涨跌停
@@ -85,41 +85,19 @@ class Vol2Price extends Task{
                 //涨跌停 并且 量小于0.3 不参与计算
                 if (($is_zt >1.09 || $is_dt < 0.9) && $valid_vol < 0.3) continue;
 
-                //处理量太小不值得计算
-                $k1 = ($day[$i]["volume"] - $day[$i-1]["volume"]) / $day[$i-1]["volume"] * 100;
-                $k2 = ($day[$i]["volume"] - $day[$i-2]["volume"]) / $day[$i-2]["volume"] * 100;
-                if (abs($k1) < 20 && abs($k2) < 20) continue;
-
-                //计算V2P公式
-
-                //计算量相关
+                //计算量的比例
                 $q2 = ($day[$i]["volume"] - $day[$i-1]["volume"]) / $day[$i-1]["volume"] * 100;
-                if ($q2 < -100) $q2 = -100;
-                if ($q2 > 100) $q2 = 100;
 
                 //计算价格相关
-                $perc = $day[$i]["percent"] * 10;
-                $q1 = $perc;
-                if ($perc > 60) $q1 = 16;
-                if ($perc <= 60 && $perc > 30) $q1 = ($perc - 30) / 15 + 13;
-                if ($perc <= 30 && $perc > 10) $q1 = ($perc - 10) / 7 + 10;
-
-                if ($perc < -60) $q1 = -16;
-                if ($perc >= -60 && $perc < -30) $q1 = ($perc + 30) / 15 - 13;
-                if ($perc >= -30 && $perc < -10) $q1 = ($perc + 10) / 7 - 10;
-
-                $q1 = $q1 > 0 ? ceil($q1 + 100) : ceil($q1 - 100);
-
-                $V2P = $q1 * $q2;
-                if ($perc <= 10 && $perc >= -10) $V2P = abs(110 * $q2);
+                $q1 = $day[$i]["percent"] * 10;
 
                 // 统计
                 $s_day++;
-                $s_V2P += $V2P;
+                if ($q1*$q2 > 0)$s_num ++;
 
             }
 
-            $stkT['Vol2Price'] = $s_day ?  ceil($s_V2P / $s_day) : 0;
+            $stkT['Vol2PriceNum'] = $s_num;
             $stkT['ValidDayNum'] = $s_day;
             $stkT['TotalDayNum'] = count($day);
 

@@ -40,7 +40,7 @@ class MessJump extends Task{
     public static function calcMessJump(){
         $resultFile = self::$thisTaskDataPath. 'Pick_MessJump.Table.txt';
 
-        $limiter = 10;
+        $limiter = 2;
 
         $stockList = Refer::getStock();
         $stockData = array();
