@@ -1,0 +1,7 @@
+﻿DdxNum|DdxPer
+DdzNum|DdzPer
+TddzNum|TddzPer
+TotalNum|TotalPer
+DayNum
+
+2016-01-25 ~ 2016-01-29

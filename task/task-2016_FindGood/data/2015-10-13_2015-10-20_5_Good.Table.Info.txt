@@ -1,0 +1,5 @@
+MaxRange
+DayNum
+message_score_max|message_score_min|message_score_dis
+basic_score_max|basic_score_min
+total_score_max|total_score_min

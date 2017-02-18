@@ -1,0 +1,16 @@
+﻿比较 2015年12月1日 至 2015年12月21日 Good个股 分析
+
+total_score_max
+total_score_min 总得分
+
+message_score_max
+message_score_min 消息面得分
+
+trade_score_max
+trade_score_min 行业面得分
+
+basic_score_max
+basic_score_min 基本面得分
+
+rate_buy_num 最近一个月份评级买入次数
+lhb_num 出现龙虎榜次数

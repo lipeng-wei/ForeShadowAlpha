@@ -1,0 +1,7 @@
+﻿DdxNum|DdxPer
+DdzNum|DdzPer
+TddzNum|TddzPer
+TotalNum|TotalPer
+DayNum
+
+数据区间筛选

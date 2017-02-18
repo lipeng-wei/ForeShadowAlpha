@@ -1,0 +1,5 @@
+﻿DdxNum|DdxPer
+DdzNum|DdzPer
+TddzNum|TddzPer
+TotalNum|TotalPer
+DayNum

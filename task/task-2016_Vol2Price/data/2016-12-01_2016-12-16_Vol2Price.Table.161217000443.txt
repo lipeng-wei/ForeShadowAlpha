@@ -1,0 +1,6 @@
+name|code|Vol2Price|ValidDayNum|TotalDayNum
+<a target="_blank" href="http://localhost/ForeShadowAlpha/Chart.php?code=sh600000"><span class="fore-stock-name">浦发银行</span><span class="fore-stock-spell displaynone">600000PFYH</span></a>|<span class="fore-stock-code">sh600000</span>|3621|10|12
+<a target="_blank" href="http://localhost/ForeShadowAlpha/Chart.php?code=sh600004"><span class="fore-stock-name">白云机场</span><span class="fore-stock-spell displaynone">600004BYJC</span></a>|<span class="fore-stock-code">sh600004</span>|2353|8|12
+<a target="_blank" href="http://localhost/ForeShadowAlpha/Chart.php?code=sh600005"><span class="fore-stock-name">武钢股份</span><span class="fore-stock-spell displaynone">600005WGGF</span></a>|<span class="fore-stock-code">sh600005</span>|1663|5|8
+<a target="_blank" href="http://localhost/ForeShadowAlpha/Chart.php?code=sh600006"><span class="fore-stock-name">东风汽车</span><span class="fore-stock-spell displaynone">600006DFQC</span></a>|<span class="fore-stock-code">sh600006</span>|2694|8|12
+<a target="_blank" href="http://localhost/ForeShadowAlpha/Chart.php?code=sh600007"><span class="fore-stock-name">中国国贸</span><span class="fore-stock-spell displaynone">600007ZGGM</span></a>|<span class="fore-stock-code">sh600007</span>|-391|10|12
