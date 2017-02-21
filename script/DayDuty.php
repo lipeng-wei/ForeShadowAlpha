@@ -29,8 +29,8 @@ class DayDuty extends Script{
 
 
 
-        self::allTmp();
-        //self::onlyTmp();
+        //self::allTmp();
+        self::onlyTmp();
 
     }
 

@@ -12,7 +12,7 @@ define('INDEX_PATH', dirname(__FILE__). '/');
 define('SCRIPT_PATH', INDEX_PATH. 'script/');
 define('DATA_PATH', INDEX_PATH. 'data/');
 define('LIB_PATH', INDEX_PATH. 'lib/');
-define('LOG_PATH', INDEX_PATH. 'log/');
+define('LOG_PATH', INDEX_PATH. 'logs/');
 define('MODULE_PATH', INDEX_PATH. 'module/');
 define('TASK_PATH', INDEX_PATH. 'task/');
 define('TMP_PATH', INDEX_PATH. 'tmp/');
