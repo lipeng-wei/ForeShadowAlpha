@@ -19,7 +19,6 @@ define('TMP_PATH', INDEX_PATH. 'tmp/');
 define('CONFIG_FILE', INDEX_PATH. 'conf.ini');
 
 define('SPLIT_EOL', "\r\n");
-define('PROJECT_DIR', "ForeShadowAlpha");
 
 
 

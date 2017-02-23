@@ -13,7 +13,7 @@
 class Url {
 
     public static function getBaseUrl(){
-        return 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT_DIR . '/';
+        return 'http://' . $_SERVER['HTTP_HOST'] . '/';
     }
     public static function getScriptUrl(){
         return self::getBaseUrl() . 'script' . '/';
@@ -23,7 +23,7 @@ class Url {
     }
 
     public static function getPhpUri($name){
-        return '/' . PROJECT_DIR . '/' . $name . '.php';
+        return '/' . $name . '.php';
 
     }
     public static function getBasePhp($name){
