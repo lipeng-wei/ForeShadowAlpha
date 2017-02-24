@@ -16,11 +16,12 @@ require_once(MODULE_PATH. 'GbbqKeeper.class.php');
 
 class GbbqStep extends Script{
 
-    private static $log = null;
-    private static $tmp = null;
+    public static $log = null;
+    public static $tmp = null;
+    public static $limit = null;
 
     public static function run(){
-        self::setNohup(false);
+        //self::setNohup(false);
 
         //日志文件
         self::$log = new Log(LOG_PATH, __FILE__);
@@ -30,6 +31,7 @@ class GbbqStep extends Script{
         self::$tmp->addTmp('gbbq.step.failed', true);
         self::$tmp->addTmp('gbbq.step.process', false);
 
+        self::$limit = 999999;
         self::updateGbbq();
     }
 
@@ -44,22 +46,23 @@ class GbbqStep extends Script{
         var_dump($json);
         */
 
-        $p = -1;
+        $l = -1;
         $list = Refer::getStock();
         //得到进度
         $content = self::$tmp->getTmpContent('gbbq.step.process');
         $content = explode('===', $content);
         $lastProcess = $content && $content[0]? $content[0]: -1;
         foreach($list as $item){
-            $p++;
-            //if ($p >= 3 ) break;
-            if ($p < $lastProcess) continue;
-            self::$tmp->putTmpContent('gbbq.step.process', $p. '==='. $item['code']. ' '. $item['name']);
+            if ($l++ > self::$limit) break;
+            if ($l < $lastProcess) continue;
+            self::$tmp->putTmpContent('gbbq.step.process', $l. '==='. $item['code']. ' '. $item['name']);
 
             $numCode = substr($item['code'], 2);
             $url = "http://stockdata.stock.hexun.com/2009_fhzzgb_" . $numCode . ".shtml";
             self::$log->debugLog($item['name'], $item['code'], $url);
+
             $html = GbbqKeeper::fetchSingleGbbq($url, $numCode);
+
             if ($html) {
                 self::$log->debugLog($item['name'], $item['code'], "Fetch Gbbq Success");
                 $now = GbbqKeeper::parseGbbqHtml($html);
