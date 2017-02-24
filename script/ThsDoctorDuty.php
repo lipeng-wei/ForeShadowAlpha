@@ -23,11 +23,12 @@ require_once(MODULE_PATH. 'TableFile.class.php');
 
 class ThsDoctorDuty extends Script{
 
-    private static $log = null;
-    private static $tmp = null;
+    public static $log = null;
+    public static $tmp = null;
+    public static $limit = null;
 
     public static function run(){
-        self::setNohup(false);
+        //self::setNohup(false);
 
         //日志文件
         self::$log = new Log(LOG_PATH, __FILE__);
@@ -35,6 +36,7 @@ class ThsDoctorDuty extends Script{
         self::$tmp = new Tmp(TMP_PATH);
         self::$tmp->addTmp('thsdoctor.duty.failed', true);
 
+        self::$limit = 999999;
         self::updateDoctor();
 
     }
@@ -44,13 +46,11 @@ class ThsDoctorDuty extends Script{
 
         self::$log->debugLog("Begin Update Ths Doctor");
 
-
-        //$i = 2;
-
+        $l = -1;
         $list = Refer::getStock();
         foreach($list as $item){
 
-            //if (--$i < 0 ) break;
+            if ($l++ > self::$limit) break;
             if ('sz300033' == $item['code']) continue;
 
             $numCode = substr($item['code'], 2);
@@ -109,14 +109,7 @@ class ThsDoctorDuty extends Script{
 
     }
 
-
-
-
-
-
-
-
-
+    // ===========================================================================================
 
     //从ZF6000导数据过来 只执行一次
     public static function importOnce(){
