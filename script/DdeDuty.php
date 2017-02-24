@@ -49,7 +49,7 @@ class DdeDuty extends Script{
         $url = 'http://www.gpcxw.com/ddx/000703.html';
         $content = DdeKeeper::curlSinglePage($url, $host, $referer, self::$tmp->getTmpFile('dde.gpcxw.duty.cookie'));
 
-        $l = 0;
+        $l = -1;
 
         $list = Refer::getStock();
         //得到进度
