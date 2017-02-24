@@ -16,14 +16,13 @@ require_once(MODULE_PATH. 'RateKeeper.class.php');
 
 class RateStep extends Script{
 
-    private static $log = null;
-    private static $tmp = null;
+    public static $log = null;
+    public static $tmp = null;
+    public static $limit = null;
 
     public static function run(){
-        self::setNohup(false);
-
-
-
+        //self::setNohup(false);
+        self::$limit = 8888;
         self::updateRate();
     }
 
@@ -36,9 +35,6 @@ class RateStep extends Script{
         self::$tmp = new Tmp(TMP_PATH);
         self::$tmp->addTmp('rate.step.time', false);
         self::$log->debugLog("Begin Update Rate");
-
-        echo '<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head><body>';
-
 
         $lastTime = self::$tmp->getTmpContent('rate.step.time');
         //校验上次更新时间
@@ -53,13 +49,18 @@ class RateStep extends Script{
 
         $page = 0;
         $list = array();
-        while($page < 4188) {
+        while($page < self::$limit) {
 
             $page++;
 
-            $url = "http://yanbao.stock.hexun.com/xgq/gsyj.aspx?1=1&page=" . $page;
+            if ($page == 1)
+                $url = "http://yanbao.stock.hexun.com/xgq/gsyj.aspx?";
+            else
+                $url = "http://yanbao.stock.hexun.com/xgq/gsyj.aspx?1=1&page=" . $page;
             self::$log->debugLog('Get Url', $url);
             $html = RateKeeper::fetchSinglePage($url);
+//            $content = $html->find('div.z_content div.table table', 0);
+//            var_dump($content->plaintext);
             self::$log->debugLog("Fetch Url Page Success");
             $updata = RateKeeper::parseRateHtml($html);
 

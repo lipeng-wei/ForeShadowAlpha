@@ -54,15 +54,19 @@ class RateKeeper extends TableFile{
 
     public static function fetchSinglePage($url){
 
+        $sleep_arr = array(0, 0, 1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
+        $sleep_idx = -1;
         while (1){
-            $c = self::curlSinglePage($url, 'yanbao.stock.hexun.com');
+            $c = self::curlSinglePage($url, 'yanbao.stock.hexun.com', 'http://yanbao.stock.hexun.com/');
             $html = str_get_html($c);
             if ( $c && $html){
                 $content = $html->find('div.z_content div.table table', 0);
                 if ($content) return $html;
             }
-            Log::nohupLog();
-            sleep(1);
+            //Log::nohupLog();
+            $sleep_idx ++;
+            if ($sleep_arr[$sleep_idx] == -1) $sleep_idx = 0;
+            sleep($sleep_arr[$sleep_idx]);
         }
     }
 
