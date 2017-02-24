@@ -17,12 +17,14 @@ require_once(MODULE_PATH . 'DdeKeeper.class.php');
 
 class DdeDuty extends Script{
 
-    private static $log = null;
-    private static $tmp = null;
+    public static $log = null;
+    public static $tmp = null;
+    public static $limit = null;
 
     public static function run(){
-        self::setNohup(false);
+        //self::setNohup(false);
 
+        self::$limit = 5;
         self::updateGpcxwDde();
 
     }
@@ -47,18 +49,19 @@ class DdeDuty extends Script{
         $url = 'http://www.gpcxw.com/ddx/000703.html';
         $content = DdeKeeper::curlSinglePage($url, $host, $referer, self::$tmp->getTmpFile('dde.gpcxw.duty.cookie'));
 
-        $p = -1;
+        $l = 0;
 
         $list = Refer::getStock();
         //得到进度
         $content = self::$tmp->getTmpContent('dde.gpcxw.duty.process');
         $content = explode('===', $content);
         $lastProcess = $content && $content[0]? $content[0]: -1;
+        $sleep_arr = array(1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
+
         foreach($list as $item){
-            $p++;
-            //if ($p >= 3 ) break;
-            if ($p < $lastProcess) continue;
-            self::$tmp->putTmpContent('dde.gpcxw.duty.process', $p. '==='. $item['code']. ' '. $item['name']);
+            if ($l++ > self::$limit) break;
+            if ($l < $lastProcess) continue;
+            self::$tmp->putTmpContent('dde.gpcxw.duty.process', $l. '==='. $item['code']. ' '. $item['name']);
 
             $numCode = substr($item['code'], 2);
             $data = 0;
@@ -66,11 +69,19 @@ class DdeDuty extends Script{
             $dde = new DdeData($item['code']);
             $last = $dde->getDdeData();
 
-
             //抓取页面
+            $sleep_idx = -1;
             while(! $data){
 
-                if ($data !== 0) sleep(1);
+                $sleep_idx ++;
+                if ($sleep_arr[$sleep_idx] == -1) {
+                    $sleep_idx = 0;
+                    self::$tmp->addTmp('dde.gpcxw.duty.cookie', true);
+                    $url = 'http://www.gpcxw.com/ddx/000703.html';
+                    $content = DdeKeeper::curlSinglePage($url, $host, $referer, self::$tmp->getTmpFile('dde.gpcxw.duty.cookie'));
+
+                }
+                if ($data !== 0) sleep($sleep_arr[$sleep_idx]);
                 $data = false;
 
                 //抓取最新的数据
@@ -101,7 +112,6 @@ class DdeDuty extends Script{
                 if (substr($k,strlen($k)-1) != '|') $k .='|';
                 $new = $k . $new;
 
-
                 //新增的个股 需要抓取历史数据
                 if (! $last){
                     //抓取历史的数据
@@ -116,12 +126,14 @@ class DdeDuty extends Script{
                     $content = DdeKeeper::curlSinglePage($url, $host, $referer, self::$tmp->getTmpFile('dde.gpcxw.duty.cookie'));
                     if (! $content) continue;
                     $content = iconv('GB2312', 'UTF-8//IGNORE', $content);
+
                     //读取历史数据
                     $cuts = explode('<=>', $content);
                     if (sizeof($cuts) != 2) continue;
                     $k = end($cuts);
                     if (substr($k,strlen($k)-1) != '|') $k .='|';
                     $new = $k . $new;
+
                 }
 
                 $data = DdeKeeper::parseGpcxwDde($new);
@@ -134,7 +146,6 @@ class DdeDuty extends Script{
                 self::$log->noticeLog($item['name'], $item['code'], "TingPai");
                 continue;
             }
-
             if ($last){
                 $updata = DdeKeeper::mergeUpdate($last, $data);
                 DdeKeeper::addDde($dde->getDataFile(), $updata);
