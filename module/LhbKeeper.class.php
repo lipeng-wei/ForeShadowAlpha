@@ -52,6 +52,39 @@ class LhbKeeper extends TableFile{
         return $contents;
     }
 
+    public static function fetchSingleJson($url){
+        $sleep_arr = array(0, 0, 1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
+        $sleep_idx = 0;
+        while ($sleep_arr[$sleep_idx] != -1){
+            $content = self::curlSinglePage($url, 'data.eastmoney.com', 'http://data.eastmoney.com/stock/lhb.html');
+            $cuts = explode('=', $content);
+            if (sizeof($cuts) != 2) continue;
+            $ret    = json_decode($cuts[1], true);
+            if ($ret && $ret["success"]) {
+                $json   = array();
+                $rows   = $ret["data"];
+                foreach($rows as $row){
+                    $res = array();
+                    $res['time']        = $row['Tdate'];
+                    $res['change']      = $row['Chgradio'];
+                    $res['buy_wan']     = ceil($row['Bmoney'] / 10000);
+                    $res['buy_percent'] = ceil($row['Bmoney'] / $row['Turnover'] * 100) / 100;
+                    $res['sell_wan']    = ceil($row['Smoney'] / 10000);
+                    $res['sell_percent']= ceil($row['Smoney'] / $row['Turnover'] * 100) / 100;
+                    $res['reason']      = $row['Ctypedes'];
+                    $code = $row['SCode'];
+                    $code = CommonInfo::Num2Code($code);
+                    array_unshift($json , array($code, $res));
+                }
+                return $json;
+            }
+
+            sleep($sleep_arr[$sleep_idx]);
+            $sleep_idx ++;
+        }
+        return array();
+    }
+    // 之前的接口暂时不使用了
     public static function fetchSinglePage($url){
 
         while (1){
@@ -73,7 +106,7 @@ class LhbKeeper extends TableFile{
         $ret = array();
         $lcode = null;
         $lchage = null;
-        foreach($rows as $row){
+        foreach($rows as $row) {
             $list = $row->find('td');
             $res = array();
             $res['time'] = $time;

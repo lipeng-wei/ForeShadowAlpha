@@ -17,14 +17,14 @@ require_once(MODULE_PATH. 'LhbKeeper.class.php');
 
 class LhbDuty extends Script{
 
-    private static $log = null;
-    private static $tmp = null;
+    public static $log = null;
+    public static $tmp = null;
+    public static $limit = null;
 
     public static function run(){
-        self::setNohup(false);
+        //self::setNohup(false);
 
-
-
+        self::$limit = 999999;
         self::updateLhb();
     }
 
@@ -38,8 +38,6 @@ class LhbDuty extends Script{
         self::$tmp->addTmp('lhb.duty.time', false);
         self::$log->debugLog("Begin Update Lhb");
 
-        echo '<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title></title></head><body>';
-
         //得到上次更新时间
         $lastTime = self::$tmp->getTmpContent('lhb.duty.time');
         //校验上次更新时间
@@ -51,7 +49,6 @@ class LhbDuty extends Script{
         if ($lastTime){
 
             //echo $lastTime . '<br />';
-
             $szzs = Refer::getSH();
             $dd = new DayData($szzs['code']);
             if ($dd->prepareData()) {
@@ -62,14 +59,23 @@ class LhbDuty extends Script{
                     if ($cTime > $lastTime){
 
                         //echo $cTime. '<br />';
-                        $url = "http://data.eastmoney.com/stock/lhb/". $cTime. ".html";
-                        self::$log->debugLog('Get Url', $url);
-                        $html = LhbKeeper::fetchSinglePage($url);
-                        self::$log->debugLog("Fetch Url Page Success");
-                        $updata = LhbKeeper::parseLhbHtml($html, $cTime);
+//                        $url = "http://data.eastmoney.com/stock/lhb/". $cTime. ".html";
+//                        self::$log->debugLog('Get Url', $url);
+//                        $html = LhbKeeper::fetchSinglePage($url);
+//                        self::$log->debugLog("Fetch Url Page Success");
+//                        $updata = LhbKeeper::parseLhbHtml($html, $cTime);
 
-                        if ($updata) {
-                            $list = array_merge($list, $updata);
+                        //http://data.eastmoney.com/DataCenter_V3/stock2016/TradeDetail/pagesize=200,page=1,
+                        //sortRule=-1,sortType=,startDate=2017-02-23,endDate=2017-02-23,gpfw=0,js=var%20data_tab_1.html?
+                        //rt=24798706
+                        $url = 'http://data.eastmoney.com/DataCenter_V3/stock2016/TradeDetail/pagesize=800,page=1,'.
+                            'sortRule=-1,sortType=,startDate='. $cTime. ',endDate='. $cTime.
+                            ',gpfw=0,js=var%20data_tab_1.html?rt='. ceil(time() / 60);
+                        $json = LhbKeeper::fetchSingleJson($url);
+                        self::$log->debugLog("Fetch Url Page Success");
+
+                        if ($json) {
+                            $list = array_merge($list, $json);
                         }
                         $thisTime = $cTime;
                     }
