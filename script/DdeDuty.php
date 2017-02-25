@@ -24,7 +24,7 @@ class DdeDuty extends Script{
     public static function run(){
         //self::setNohup(false);
 
-        self::$limit = 5;
+        self::$limit = 999999;
         self::updateGpcxwDde();
 
     }
