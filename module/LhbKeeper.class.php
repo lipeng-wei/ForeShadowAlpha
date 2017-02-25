@@ -53,9 +53,8 @@ class LhbKeeper extends TableFile{
     }
 
     public static function fetchSingleJson($url){
-        $sleep_arr = array(0, 0, 1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
         $sleep_idx = 0;
-        while ($sleep_arr[$sleep_idx] != -1){
+        while (CommonInfo::GetSleepTime($sleep_idx) != -1){
             $content = self::curlSinglePage($url, 'data.eastmoney.com', 'http://data.eastmoney.com/stock/lhb.html');
             $cuts = explode('=', $content);
             if (sizeof($cuts) != 2) continue;
@@ -79,7 +78,7 @@ class LhbKeeper extends TableFile{
                 return $json;
             }
 
-            sleep($sleep_arr[$sleep_idx]);
+            sleep(CommonInfo::GetSleepTime($sleep_idx));
             $sleep_idx ++;
         }
         return array();

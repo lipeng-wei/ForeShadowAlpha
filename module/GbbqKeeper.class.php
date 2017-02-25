@@ -20,12 +20,11 @@ class GbbqKeeper extends TableFile{
     public static function fetchSingleGbbq($url, $numCode){
 
         $html = file_get_html($url);
-        $sleep_arr = array(0, 0, 1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
         $sleep_idx = -1;
         while (! $html){
             $sleep_idx ++;
-            if ($sleep_arr[$sleep_idx] == -1) return false;
-            sleep($sleep_arr[$sleep_idx]);
+            if (CommonInfo::GetSleepTime($sleep_idx) == -1) return false;
+            sleep(CommonInfo::GetSleepTime($sleep_idx));
             $html = file_get_html($url);
         }
         $res = $html->find('div#stocktitle a',1);

@@ -102,5 +102,16 @@ class CommonInfo {
         return $codeNameArray;
     }
 
+    public static function GetSleepTime($idx) {
+        static $sleep_arr = array(0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2,
+            8, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2,
+            20, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2,
+            60, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2,
+            200, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2,
+            600, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2,
+            -1, -1, -1);
+        return $sleep_arr[$idx];
+    }
 
 } 

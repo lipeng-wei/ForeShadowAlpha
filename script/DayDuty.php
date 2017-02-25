@@ -189,16 +189,15 @@ class DayDuty extends Script{
 
 
         $json = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
-        $sleep_arr = array(1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
         $sleep_idx = -1;
         while(! ($json = DayKeeper::parseXueqiuJson($json))){
             $json = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
             $sleep_idx ++;
-            if ($sleep_arr[$sleep_idx] == -1) break;
-            sleep($sleep_arr[$sleep_idx]);
+            if (CommonInfo::GetSleepTime($sleep_idx) == -1) break;
+            sleep(CommonInfo::GetSleepTime($sleep_idx));
         }
         // 抓取解析失败
-        if ($sleep_idx !=-1 && $sleep_arr[$sleep_idx] == -1) {
+        if ($sleep_idx !=-1 && CommonInfo::GetSleepTime($sleep_idx) == -1) {
             self::$log->errorLog($item['name'], $item['code'], $item['type'], $item['action'], "Curl and Parse Failed");
             $item['action'] = 'merge';
             self::$tmp->putTmpContent('day.duty.failed', join(":", $item) . "|", FILE_APPEND);
@@ -238,15 +237,14 @@ class DayDuty extends Script{
         self::$log->debugLog($item['name'], $item['code'], $item['type'], $item['action'], $url);
 
         $json = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
-        $sleep_arr = array(1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
         $sleep_idx = -1;
         while(! ($json = DayKeeper::parseXueqiuJson($json))){
             $json = DayKeeper::curlXueqiuJson($url, self::$tmp->getTmpFile('day.duty.cookie'));
             $sleep_idx ++;
-            if ($sleep_arr[$sleep_idx] == -1) break;
-            sleep($sleep_arr[$sleep_idx]);
+            if (CommonInfo::GetSleepTime($sleep_idx) == -1) break;
+            sleep(CommonInfo::GetSleepTime($sleep_idx));
         }
-        if ($sleep_idx !=-1 && $sleep_arr[$sleep_idx] == -1) {
+        if ($sleep_idx !=-1 && CommonInfo::GetSleepTime($sleep_idx) == -1) {
             self::$log->errorLog($item['name'], $item['code'], $item['type'], $item['action'], "Curl and Parse Failed");
             $item['action'] = 'reset';
             self::$tmp->putTmpContent('day.duty.failed', join(":", $item) . "|", FILE_APPEND);

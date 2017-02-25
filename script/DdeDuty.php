@@ -56,7 +56,6 @@ class DdeDuty extends Script{
         $content = self::$tmp->getTmpContent('dde.gpcxw.duty.process');
         $content = explode('===', $content);
         $lastProcess = $content && $content[0]? $content[0]: -1;
-        $sleep_arr = array(1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
 
         foreach($list as $item){
             if ($l++ > self::$limit) break;
@@ -74,14 +73,14 @@ class DdeDuty extends Script{
             while(! $data){
 
                 $sleep_idx ++;
-                if ($sleep_arr[$sleep_idx] == -1) {
+                if (CommonInfo::GetSleepTime($sleep_idx) == -1) {
                     $sleep_idx = 0;
                     self::$tmp->addTmp('dde.gpcxw.duty.cookie', true);
                     $url = 'http://www.gpcxw.com/ddx/000703.html';
                     $content = DdeKeeper::curlSinglePage($url, $host, $referer, self::$tmp->getTmpFile('dde.gpcxw.duty.cookie'));
 
                 }
-                if ($data !== 0) sleep($sleep_arr[$sleep_idx]);
+                if ($data !== 0) sleep(CommonInfo::GetSleepTime($sleep_idx));
                 $data = false;
 
                 //抓取最新的数据

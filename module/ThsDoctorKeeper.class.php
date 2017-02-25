@@ -21,12 +21,11 @@ class ThsDoctorKeeper extends TableFile{
     public static function fetchSingleThsDoctor($url, $numCode){
 
         $codeGet = false;
-        $sleep_arr = array(0, 0, 1, 1, 1, 1, 2, 2, 2, 8, 8, 50, 100, 200, 600, -1, -1, -1);
         $sleep_idx = -1;
         while ($codeGet != $numCode){
             $sleep_idx ++;
-            if ($sleep_arr[$sleep_idx] == -1) $sleep_idx = 0;
-            sleep($sleep_arr[$sleep_idx]);
+            if (CommonInfo::GetSleepTime($sleep_idx) == -1) $sleep_idx = 0;
+            sleep(CommonInfo::GetSleepTime($sleep_idx));
 
             $html = file_get_html($url);
             if ($html){
