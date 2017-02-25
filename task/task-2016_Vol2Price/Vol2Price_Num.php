@@ -55,7 +55,7 @@ class Vol2Price extends Task{
 
             $stkT = array();
 
-            $stkT['name'] = '<a target="_blank" href="'.Url::getBasePhp('Chart') . '?code=' . $stkL['code']. '">' .
+            $stkT['name'] = '<a target="_blank" href="/Chart.php?code=' . $stkL['code']. '">' .
                 '<span class="fore-stock-name">' . $stkL['name'] . '</span>' .
                 '<span class="fore-stock-spell displaynone">' . $stkL['spell'] . '</span></a>';
             $stkT['code'] =  '<span class="fore-stock-code">' . $stkL['code'] . '</span>';

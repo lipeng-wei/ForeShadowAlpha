@@ -72,7 +72,7 @@ class DigGoodStock extends Task{
         $end = '2015-12-21';
         foreach($stockList as $stkL){
             $stkT = array();
-            $stkT['name'] = '<a target="_blank" href="'.Url::getBasePhp('Stock') . '?code=' . $stkL['code']. '">' .
+            $stkT['name'] = '<a target="_blank" href="/Chart.php?code=' . $stkL['code']. '">' .
                 '<span class="fore-stock-name">' . $stkL['name'] . '</span>' .
                 '<span class="fore-stock-spell displaynone">' . $stkL['spell'] . '</span></a>';
             $stkT['code'] =  '<span class="fore-stock-code">' . $stkL['code'] . '</span>';

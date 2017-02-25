@@ -80,7 +80,7 @@
             </div>
         </li>
         {{/foreach}}
-        <li class="mm-menu__item">
+        <!-- <li class="mm-menu__item">
             <a class="mm-menu__link" href="javascript:void(0)">
                 <span class="mm-menu__link-text">Task-fwefwedwe20151201_20151221_Good</span>
             </a>
@@ -105,10 +105,10 @@
 
             </div>
 
-        </li>
+        </li>-->
 
     </ul>
-</nav><!-- /nav -->
+</nav>
 
 </body>
 </html>
