@@ -1,0 +1,5 @@
+Vol2Price           量价配合 加权值（越大越好）
+Vol2PriceNum        量价配合 天数（越多越好）
+ValidDayNum         有效 天数（适中偏上即可）
+DdePercent          DDE飘红 天数（越多越好）
+TotalDayNum         总 天数（适中偏上即可）

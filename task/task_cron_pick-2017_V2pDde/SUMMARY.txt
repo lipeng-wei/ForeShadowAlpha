@@ -1,0 +1,2 @@
+aim|info|table
+pick|V2pDde.Table.Info.txt|2017-02-26_V2pDde.Table.txt
