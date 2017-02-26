@@ -1,3 +1,3 @@
 name|code|DdxNum|DdxPer|DdzNum|DdzPer|TddzNum|TddzPer|TotalNum|TotalPer|DayNum
-<a target="_blank" href="http://localhost/ForeShadowAlpha/Stock.php?code=sh600000"><span class="fore-stock-name">浦发银行</span><span class="fore-stock-spell displaynone">600000PFYH</span></a>|<span class="fore-stock-code">sh600000</span>|13|0.65|13|0.65|4|0.2|21|0.3501|20
-<a target="_blank" href="http://localhost/ForeShadowAlpha/Stock.php?code=sh600004"><span class="fore-stock-name">白云机场</span><span class="fore-stock-spell displaynone">600004BYJC</span></a>|<span class="fore-stock-code">sh600004</span>|6|0.3|6|0.3|5|0.25|16|0.2667|20
+<a target="_blank" href="/Stock.php?code=sh600000"><span class="fore-stock-name">浦发银行</span><span class="fore-stock-spell displaynone">600000PFYH</span></a>|<span class="fore-stock-code">sh600000</span>|13|0.65|13|0.65|4|0.2|21|0.3501|20
+<a target="_blank" href="/Stock.php?code=sh600004"><span class="fore-stock-name">白云机场</span><span class="fore-stock-spell displaynone">600004BYJC</span></a>|<span class="fore-stock-code">sh600004</span>|6|0.3|6|0.3|5|0.25|16|0.2667|20

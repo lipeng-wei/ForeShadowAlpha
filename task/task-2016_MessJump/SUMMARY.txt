@@ -1,2 +1,2 @@
 ﻿aim|info|table
-pick|MessJump.Table.Info.txt|Pick_MessJump.Table.txt
+prove|MessJump.Table.Info.txt|Pick_MessJump.Table.txt

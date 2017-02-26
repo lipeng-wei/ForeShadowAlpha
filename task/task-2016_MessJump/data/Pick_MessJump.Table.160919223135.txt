@@ -1,3 +1,3 @@
 name|code|mess_score_yesterday|mess_score_today|mess_score_change|mess_score_max_40d|mess_score_min_40d
-<a target="_blank" href="http://localhost/ForeShadowAlpha/Chart.php?code=sh600000"><span class="fore-stock-name">浦发银行</span><span class="fore-stock-spell displaynone">600000PFYH</span></a>|<span class="fore-stock-code">sh600000</span>|5.8|5.8|0|6.6|5.6
-<a target="_blank" href="http://localhost/ForeShadowAlpha/Chart.php?code=sh600004"><span class="fore-stock-name">白云机场</span><span class="fore-stock-spell displaynone">600004BYJC</span></a>|<span class="fore-stock-code">sh600004</span>|5.5|5.5|0|7.6|5.5
+<a target="_blank" href="/Chart.php?code=sh600000"><span class="fore-stock-name">浦发银行</span><span class="fore-stock-spell displaynone">600000PFYH</span></a>|<span class="fore-stock-code">sh600000</span>|5.8|5.8|0|6.6|5.6
+<a target="_blank" href="/Chart.php?code=sh600004"><span class="fore-stock-name">白云机场</span><span class="fore-stock-spell displaynone">600004BYJC</span></a>|<span class="fore-stock-code">sh600004</span>|5.5|5.5|0|7.6|5.5
