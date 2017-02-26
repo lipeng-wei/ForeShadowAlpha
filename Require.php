@@ -16,7 +16,10 @@ define('LOG_PATH', INDEX_PATH. 'logs/');
 define('MODULE_PATH', INDEX_PATH. 'module/');
 define('TASK_PATH', INDEX_PATH. 'task/');
 define('TMP_PATH', INDEX_PATH. 'tmp/');
-define('CONFIG_FILE', INDEX_PATH. 'conf.ini');
+define('CONFIG_PATH', INDEX_PATH. 'conf/');
+
+
+define('CONFIG_FILE', CONFIG_PATH. 'conf.ini');
 
 define('SPLIT_EOL', "\r\n");
 
