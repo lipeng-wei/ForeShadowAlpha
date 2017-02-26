@@ -35,6 +35,7 @@ class LhbKeeper extends TableFile{
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//设置返回数据
+        curl_setopt($ch, CURLOPT_TIMEOUT,60);   //只需要设置一个秒的数量就可以
 
         if ($cookieFile) {
             curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile); //保存
@@ -56,9 +57,16 @@ class LhbKeeper extends TableFile{
         $sleep_idx = 0;
         while (CommonInfo::GetSleepTime($sleep_idx) != -1){
             $content = self::curlSinglePage($url, 'data.eastmoney.com', 'http://data.eastmoney.com/stock/lhb.html');
-            $cuts = explode('=', $content);
-            if (sizeof($cuts) != 2) continue;
-            $ret    = json_decode($cuts[1], true);
+            $encode = mb_detect_encoding($content, array('ASCII', 'UTF-8', 'GB2312', 'GBK', 'BIG5'));
+            if ($encode == 'EUC-CN' || $encode == 'GB2312' || $encode == 'GBK') {
+                $content = iconv('GBK', 'UTF-8', $content);
+            }
+            $content = substr($content, 15);
+            //var_dump($content);
+            $ret    = json_decode($content, true);
+            //var_dump(json_last_error());
+            //var_dump($ret['pages']);
+
             if ($ret && $ret["success"]) {
                 $json   = array();
                 $rows   = $ret["data"];

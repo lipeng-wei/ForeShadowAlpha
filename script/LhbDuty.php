@@ -46,6 +46,7 @@ class LhbDuty extends Script{
         $lastTime = $k[0];
         $thisTime = $lastTime;
 
+        self::$log->debugLog("Update From : ", $lastTime);
         if ($lastTime){
 
             //echo $lastTime . '<br />';
@@ -54,6 +55,7 @@ class LhbDuty extends Script{
             if ($dd->prepareData()) {
                 $ks = $dd->getDayPeriod($lastTime, true);
                 $list = array();
+                self::$log->debugLog("Update Till : ", end($ks)['time']);
                 foreach($ks as $k){
                     $cTime = $k['time'];
                     if ($cTime > $lastTime){
@@ -71,8 +73,9 @@ class LhbDuty extends Script{
                         $url = 'http://data.eastmoney.com/DataCenter_V3/stock2016/TradeDetail/pagesize=800,page=1,'.
                             'sortRule=-1,sortType=,startDate='. $cTime. ',endDate='. $cTime.
                             ',gpfw=0,js=var%20data_tab_1.html?rt='. ceil(time() / 60);
+                        self::$log->debugLog($cTime, "Fetch Url: ", $url);
                         $json = LhbKeeper::fetchSingleJson($url);
-                        self::$log->debugLog("Fetch Url Page Success");
+                        self::$log->debugLog($cTime, "Fetch Url Page Success");
 
                         if ($json) {
                             $list = array_merge($list, $json);
