@@ -32,8 +32,8 @@ class V2pDde extends Task {
         self::$limiter          = 9999;
 
         $period = 30;
-        $end    = date('Y-m-d',strtotime('today -12 hour'));
-        $start  = date('Y-m-d',strtotime('today -'. $period. ' day -12 hour'));
+        $end    = date('Y-m-d',strtotime('now -12 hour'));
+        $start  = date('Y-m-d',strtotime('now -'. $period. ' day -12 hour'));
 
         $tableFile       = self::$thisTaskDataPath. $end. '_V2pDde.Table.txt';
         $summaryFile    = self::$thisTaskBasePath. 'SUMMARY.txt';
