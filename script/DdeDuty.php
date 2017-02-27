@@ -74,10 +74,13 @@ class DdeDuty extends Script{
 
                 $sleep_idx ++;
                 if (CommonInfo::GetSleepTime($sleep_idx) == -1) {
-                    $sleep_idx = 0;
+                    $data = 'failed';
+                    break;
+                }
+                if (CommonInfo::GetSleepTime($sleep_idx) > 40) {
                     self::$tmp->addTmp('dde.gpcxw.duty.cookie', true);
                     $url = 'http://www.gpcxw.com/ddx/000703.html';
-                    $content = DdeKeeper::curlSinglePage($url, $host, $referer, self::$tmp->getTmpFile('dde.gpcxw.duty.cookie'));
+                    DdeKeeper::curlSinglePage($url, $host, $referer, self::$tmp->getTmpFile('dde.gpcxw.duty.cookie'));
 
                 }
                 if ($data !== 0) sleep(CommonInfo::GetSleepTime($sleep_idx));
@@ -95,7 +98,7 @@ class DdeDuty extends Script{
 
                 //处理停牌
                 if (substr($content, 0, 7) == 'tingpai'){
-                    $data = false;
+                    $data = 'tingpai';
                     break;
                 }
 
@@ -141,8 +144,12 @@ class DdeDuty extends Script{
 
             //print_r($data);
             //处理停牌
-            if (! $data){
+            if ($data == 'tingpai'){
                 self::$log->noticeLog($item['name'], $item['code'], "TingPai");
+                continue;
+            }
+            if ($data == 'failed'){
+                self::$log->errorLog($item['name'], $item['code'], "Failed");
                 continue;
             }
             if ($last){

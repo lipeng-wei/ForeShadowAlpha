@@ -33,7 +33,7 @@ class DdeKeeper extends TableFile{
         $header[]= 'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:41.0) Gecko/20100101 Firefox/41.0 ';
 
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_TIMEOUT,10);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 60);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);//设置返回数据
 
         curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile); //保存
