@@ -75,6 +75,7 @@ class TableFilter{
     //$min 为 要求最短周期数
     function getLastPeriod($pos, $num, $min = 1){
         $s = $pos === true ? 0 : sizeof($this->_innerData)- $pos - 1;
+        $s = $s < 0 ? 0 : $s;
         $n = $num === true ? null : $num;
         return $s >= 0 && $s + $min <= sizeof($this->_innerData) ? array_slice($this->_innerData, $s, $n) : false;
 

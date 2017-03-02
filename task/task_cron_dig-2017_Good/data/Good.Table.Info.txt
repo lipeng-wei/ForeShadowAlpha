@@ -1,0 +1,5 @@
+range   涨幅
+new     今天新增
+
+total   总数
+new     新增数

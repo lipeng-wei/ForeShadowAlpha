@@ -1,0 +1,2 @@
+aim|info|table
+pick|Good.Table.Info.txt|All_5D30PCT_GoodTotal.Table.txt
