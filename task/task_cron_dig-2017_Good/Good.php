@@ -41,11 +41,12 @@ class Good extends Task
         if ($dd->prepareData()) {
 
             // ---------- 补数据 ----------
-            for ($i = 388; $i >=4 ; $i--){
+            for ($i = 10; $i >=0 ; $i--){
                 $ks = $dd->getLastPeriod($i, $period, $period);
                 $start = $ks[0]['time'];
                 $pre = $ks[$period - 2]['time'];
                 $end = $ks[$period - 1]['time'];
+                if ($end <= '2017-02-24') continue;
                 //echo "$start ~ $end  \n";
 
                 $preTableFile = self::$thisTaskDataPath . $pre . '_' . $comment . '_Good.Table.txt';
