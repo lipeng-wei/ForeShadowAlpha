@@ -29,7 +29,7 @@ class Vol2Price extends Task{
         self::$thisTaskLogPath = self::$thisTaskBasePath. 'log/';
         self::$thisTaskTmpPath = self::$thisTaskBasePath. 'tmp/';
 
-        self::setNohup(false);
+        //self::setNohup(false);
         //以上为设置
 
         //以下为具体的函数调用
@@ -37,7 +37,12 @@ class Vol2Price extends Task{
         //self::calcV2P('2016-10-10', '2016-10-31');
         //self::calcV2P('2016-11-01', '2016-11-14');
         //self::calcV2P('2016-12-01', '2016-12-16');
-        self::calcV2P('2017-01-25', '2017-07-03');
+        //self::calcV2P('2017-01-25', '2017-07-03');
+        //self::calcV2P('2017-04-05', '2017-07-09');
+        //self::calcV2P('2017-05-20', '2017-07-20');
+        //self::calcV2P('2017-03-20', '2017-07-20');
+        //self::calcV2P('2017-02-20', '2017-07-20');
+        self::calcV2P('2017-04-30', '2017-07-30');
 
     }
 

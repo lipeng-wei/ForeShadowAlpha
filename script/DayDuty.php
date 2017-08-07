@@ -85,7 +85,8 @@ class DayDuty extends Script{
 
         //更新个股的日线数据
         $list = Refer::getStock();
-        $rights = array('before', 'normal', 'after');
+        //$rights = array('before', 'normal', 'after');
+        $rights = array('before', 'normal');
         $l = 0;
         foreach($list as $item){
             if ($l++ > self::$limit) break;
