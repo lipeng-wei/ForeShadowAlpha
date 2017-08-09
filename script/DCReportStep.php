@@ -7,7 +7,7 @@
  *
  * 每天运行 更新 东方财富 研报的运行脚本
  *
- *  report.dc.step.time 2017-08-09
+ *  Report.dc.step.time.Tmp.txt 2017-08-09
  */
 
 require_once(dirname(__FILE__). '/../Require.php');
@@ -81,21 +81,18 @@ class DCReportStep extends Script{
             foreach($list as $new){
 
                 if ($new[0]) {
-
-                }
-
-
-                $rd = new DCReportData($new[0]);
-                $data = $rd->getDCReportData();
-                if (! $data) {
-                    TableFile::putSomeData($rd->getDataFile(), array($new[1]));
-                    self::$log->noticeLog("Update", $new[0], $new[1]['time'], $new[1]['title'], "Success");
-                    continue;
-                }
-                //echo $new[1]['time']. '>'. $t. '<br />';
-                if ($new[1]['time'] > $lastTime && $new[1]['time'] <= $thisTime ){
-                    TableFile::putSomeData($rd->getDataFile(), array($new[1]));
-                    self::$log->noticeLog("Update", $new[0], $new[1]['time'], $new[1]['title'], "Success");
+                    $rd = new DCReportData($new[0]);
+                    $data = $rd->getDCReportData();
+                    if (! $data) {
+                        TableFile::putSomeData($rd->getDataFile(), array($new[1]));
+                        self::$log->noticeLog("Update", $new[0], $new[1]['time'], $new[1]['title'], "Success");
+                        continue;
+                    }
+                    //echo $new[1]['time']. '>'. $t. '<br />';
+                    if ($new[1]['time'] > $lastTime && $new[1]['time'] <= $thisTime ){
+                        TableFile::putSomeData($rd->getDataFile(), array($new[1]));
+                        self::$log->noticeLog("Update", $new[0], $new[1]['time'], $new[1]['title'], "Success");
+                    }
                 }
             }
         }else {
