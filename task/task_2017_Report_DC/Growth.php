@@ -30,7 +30,9 @@ class Growth extends Task{
         //以上为设置
 
         //以下为具体的函数调用
-        self::filterReport('2016-12-30', '2016-04-01', '2015-11-01');
+        //self::filterReport('2016-12-30', '2016-04-01', '2015-11-01');
+        //self::filterReport('2017-08-09', '2017-04-01', '2016-11-01');
+        self::filterReport('2017-08-09', '2017-07-09', '2017-03-09');
 
     }
 
@@ -71,7 +73,8 @@ class Growth extends Task{
 <th>日期</th>
 <th>机构</th>
 <th>标题</th>
-<th>链接</th>
+<th>详情</th>
+<th>更多</th>
 </tr>
 </thead>
 <tbody>
@@ -119,6 +122,13 @@ class Growth extends Task{
                     $stkRow[] = $rddr['title'];
                 }
                 $stkRow[] = '<a target="_blank" href="' . $rddr['url']. '">打开</a>';
+                $stkRow[] = '<a target="_blank" href="http://stock.jrj.com.cn/share,'.
+                    CommonInfo::Code2Num($stkL['code']).',stockyanbao.shtml">金融界</a>&nbsp;'.
+                    '<a target="_blank" href="http://vip.stock.finance.sina.com.cn/q/go.php/vReport_List/kind/search/index.phtml?t1=2&symbol='.
+                    $stkL['code'].'">新浪</a>&nbsp;'.'<a target="_blank" href="http://yanbao.stock.hexun.com/yb_'.
+                    CommonInfo::Code2Num($stkL['code']).'.shtml">和讯</a>&nbsp;'.
+                    '<a target="_blank" href="http://www.iwencai.com/search?typed=0&preParams=&ts=1&f=1&qs=result_tab&tid=report&w='.
+                    $stkL['name'].'">i问财</a>';
                 array_unshift($stkBlock, $stkRow);
             }
             if ($is_select) {
