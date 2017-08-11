@@ -38,7 +38,7 @@ class Growth extends Task{
 
     //开始时间$start 结束时间$end
     public static function filterReport($end, $start, $show){
-        $pattern = "/(不可限量|高景气|翻倍|翻番|加速|超预期|大幅|高速增长|高增长|爆发|迅猛增长|暴增|收获期|放量|快速增长)/";
+        $pattern = "/(不可限量|高景气|翻倍|翻番|加速|超预期|大幅增长|高速增长|高增长|爆发|迅猛增长|暴增|收获期|放量|快速增长)/";
         $replacement = "<span class='sp'>$1</span>";
         $resultFile = self::$thisTaskDataPath. $end. '_'. $start. '_DCReport_Growth.html';
         $title_content = 'DC_Report 研报筛选 ('. $start. '~'. $end. ')';
